@@ -16,20 +16,20 @@ export class SplunkAsset {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent {
+
   title = 'Dashboard'; 
   model = new SplunkAsset();
 
   
   index_types = ['Event', 'Metrics','Summary', 'Summary Metrics'];
-  index_created_by_list = ['Badri Dash', 'Bismaya Pattanaik','Jay Regunathan', 'Sunith'];
 
-  Hobbies: string[] = [
-    'Acrobatics',
-    'Acting',
-    'Animation',
-    'Astronomy',
-    'Baking'
+  index_created_by_list: string[] = [
+    'Badri Dash',
+    'Bismaya Pattanaik',
+    'Jay Regunathan',
+    'Sunith'
   ];
 
   constructor() {}
@@ -37,7 +37,8 @@ export class DashboardComponent {
   onSubmit(form) {
     console.log(form.value);
   }
-  ngOnInit(): void {
-  }
+  
 
 }
+
+
