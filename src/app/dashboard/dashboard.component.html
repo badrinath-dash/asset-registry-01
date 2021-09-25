@@ -1,3 +1,97 @@
-<div class="main_container" style=" height:100vh;">
-  Hello...
+<form #userForm="ngForm" (ngSubmit)="userForm.form.valid && onSubmit(userForm)">
+<div class="form-style-10">
+<h2 class="field-title">
+<a href="#collapseoverview" aria-expanded="false" class="collapsing-h2">
+<i class="cu-btn-exp-col btn-collapsed">Overview</i>
+</a>
+</h2>
+
+<div class="form-group">
+      <label>Name</label> 
+      <input type="text" name="name" class="form-control" [(ngModel)]="model.name" #name="ngModel"
+          [ngClass]="{ 'is-invalid': userForm.submitted && name.invalid }" required>
+      <div class="invalid-feedback" *ngIf="userForm.submitted && name.invalid">
+          <p *ngIf="name.errors.required">Name is required</p>
+      </div>
+  </div>
+  
+
+  <div class="form-group">
+  <label>Description</label>
+  <input type="text" class="form-control" name="description" [(ngModel)]="model.description" #description="ngModel"
+      [ngClass]="{ 'is-invalid': userForm.submitted && description.invalid }" description required>
+  <div *ngIf="userForm.submitted && description.invalid" class="invalid-feedback">
+      <div *ngIf="description.errors.required">description is required</div>
+  </div>
 </div>
+
+<div class="form-group">
+<label for="IndexType">Index Type</label>
+<select class="form-control" id="index_type" name="index_type"  [(ngModel)]="model.index_type"  #index_type="ngModel">
+  <option *ngFor="let index_type of index_types" [value]="index_type">{{index_type}}</option>
+</select>
+<div *ngIf="userForm.submitted && index_type.invalid" class="invalid-feedback">
+<div *ngIf="index_type.errors.required">index_type is required</div>
+</div>
+</div>
+<div class="form-group">
+<label>Splunk App Name</label>
+<input type="text" class="form-control" name="app_name" [(ngModel)]="model.app_name" #app_name="ngModel"
+    [ngClass]="{ 'is-invalid': userForm.submitted && app_name.invalid }" app_name required>
+<div *ngIf="userForm.submitted && app_name.invalid" class="invalid-feedback">
+    <div *ngIf="app_name.errors.required">app_name is required</div>
+</div>
+</div>
+<div class="form-group">
+<label>Splunk Role Name</label>
+<input type="text" class="form-control" name="role_name" [(ngModel)]="model.role_name" #role_name="ngModel"
+    [ngClass]="{ 'is-invalid': userForm.submitted && role_name.invalid }" role_name required>
+<div *ngIf="userForm.submitted && role_name.invalid" class="invalid-feedback">
+    <div *ngIf="role_name.errors.required">Role Name is required</div>
+</div>
+</div>
+
+
+  <div class="form-group">
+      <label>Email</label>
+      <input type="email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel"
+          [ngClass]="{ 'is-invalid': userForm.submitted && email.invalid }" email required>
+      <div *ngIf="userForm.submitted && email.invalid" class="invalid-feedback">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.email">Must be a valid email address</div>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel"
+          [ngClass]="{ 'is-invalid': userForm.submitted && password.invalid }" minlength="8" required>
+      <div *ngIf="userForm.submitted && password.invalid" class="invalid-feedback">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">Password should be at least 8 characters long</div>
+      </div>
+  </div>
+  <div class="dropdown">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Dropdown button
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
+  
+
+  <div class="form-group">
+      <button class="btn btn-danger btn-block">Submit</button>
+  </div>
+</div>
+</form>
+~
