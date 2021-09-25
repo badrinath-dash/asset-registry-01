@@ -42,9 +42,7 @@ export class DashboardComponent {
   onSubmit(form) {
     console.log(form.value);
   }
-  ngOnInit(form) {
-    console.log(form.value);
-  }
+ 
 
 }
 
