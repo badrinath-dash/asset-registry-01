@@ -11,7 +11,7 @@ import { ToggleSidebarModule } from './navigation/toggle-sidebar/toggle-sidebar.
 import { HeaderModule } from './navigation/header/header.module';
 import { SidebarModule } from './navigation/sidebar/sidebar.module';
 
-import { TerminalModule } from './af/terminal/terminal.module';
+
 
 @NgModule({
   declarations: [
@@ -25,8 +25,7 @@ import { TerminalModule } from './af/terminal/terminal.module';
     DashboardModule,
     HeaderModule,
     SidebarModule,
-    ToggleSidebarModule,
-    TerminalModule,
+    ToggleSidebarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
