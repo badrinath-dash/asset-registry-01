@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-export class User {
+export class SplunkAsset {
   public name: string;
   public description: string;
   public email: string;
@@ -8,6 +8,7 @@ export class User {
   public index_type: string;
   public app_name: string;
   public role_name: string;
+  public index_created_by: string;
 }
 
 @Component({
@@ -17,10 +18,11 @@ export class User {
 })
 export class DashboardComponent {
   title = 'Dashboard'; 
-  model = new User();
+  model = new SplunkAsset();
 
   
   index_types = ['Event', 'Metrics','Summary', 'Summary Metrics'];
+  index_created_by = ['Badri Dash', 'Bismaya Pattanaik','Jay Regunathan', 'Sunith'];
 
   Hobbies: string[] = [
     'Acrobatics',
