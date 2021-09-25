@@ -23,7 +23,12 @@ export class DashboardComponent {
   model = new SplunkAsset();
 
   
-  index_types = ['Event', 'Metrics','Summary', 'Summary Metrics'];
+  index_types = [
+    'Event', 
+    'Metrics',
+    'Summary', 
+    'Summary Metrics'
+  ];
 
   index_created_by_list: string[] = [
     'Badri Dash',
