@@ -7,7 +7,7 @@ import { sidebarAnimation, iconAnimation, labelAnimation } from '../../animation
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss'],
+  styleUrls: ['./sidebar.component.css'],
   animations: [
     sidebarAnimation(),
     iconAnimation(),
