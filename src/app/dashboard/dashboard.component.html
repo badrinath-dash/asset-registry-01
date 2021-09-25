@@ -75,10 +75,19 @@
 <div class="form-group">
 <label for="IndexType">Index Created By</label>
 <select class="form-control" id="index_created_by" name="index_created_by"  [(ngModel)]="model.index_created_by"  #index_created_by="ngModel">
-  <option *ngFor="let index_created of index_created_by" [value]="index_created_by">{{index_created}}</option>
+  <option *ngFor="let index_created_by of index_created_by_list" [value]="index_created_by">{{index_created_by}}</option>
 </select>
 <div *ngIf="userForm.submitted && index_created_by.invalid" class="invalid-feedback">
 <div *ngIf="index_created_by.errors.required">Index Created by is required</div>
+</div>
+</div> 
+
+<div class="form-group">
+<label>Index Daily Size</label>
+<input type="text" class="form-control" name="index_daily_size" [(ngModel)]="model.index_daily_size" #index_daily_size="ngModel"
+    [ngClass]="{ 'is-invalid': userForm.submitted && role_name.invalid }" index_daily_size required>
+<div *ngIf="userForm.submitted && index_daily_size.invalid" class="invalid-feedback">
+    <div *ngIf="index_daily_size.errors.required">Index Daily Size is required</div>
 </div>
 </div> 
 

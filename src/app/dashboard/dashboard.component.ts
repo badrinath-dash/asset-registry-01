@@ -8,7 +8,7 @@ export class SplunkAsset {
   public index_type: string;
   public app_name: string;
   public role_name: string;
-  public index_created_by: string;
+  public index_created_by_list: string;
 }
 
 @Component({
@@ -22,7 +22,7 @@ export class DashboardComponent {
 
   
   index_types = ['Event', 'Metrics','Summary', 'Summary Metrics'];
-  index_created_by = ['Badri Dash', 'Bismaya Pattanaik','Jay Regunathan', 'Sunith'];
+  index_created_by_list = ['Badri Dash', 'Bismaya Pattanaik','Jay Regunathan', 'Sunith'];
 
   Hobbies: string[] = [
     'Acrobatics',
