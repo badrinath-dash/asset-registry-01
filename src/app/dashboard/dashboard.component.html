@@ -1,6 +1,6 @@
 <form #userForm="ngForm" (ngSubmit)="userForm.form.valid && onSubmit(userForm)">
   <div class="form-style-10">
-    <mat-expansion-panel>
+    <mat-expansion-panel  [expanded]="true">
       <mat-expansion-panel-header>
         <mat-panel-title> Index Overview </mat-panel-title>
       </mat-expansion-panel-header>
@@ -53,6 +53,7 @@
           name="index_type"
           [(ngModel)]="model.index_type"
           #index_type="ngModel"
+          required
         >
           <option *ngFor="let index_type of index_types" [value]="index_type">
             {{ index_type }}
@@ -305,7 +306,9 @@
     </mat-expansion-panel>
     <p></p>
     <div class="form-group">
-      <button class="btn btn-danger btn-block">Submit</button>
+      
+      <button (click)="onSubmit()">Submit</button>  
+      <button class="btn btn-danger btn-block">Submit1</button>
     </div>
   </div>
 </form>
