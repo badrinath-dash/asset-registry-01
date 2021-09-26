@@ -1,0 +1,308 @@
+<form #userForm="ngForm" (ngSubmit)="userForm.form.valid && onSubmit(userForm)">
+<div class="form-style-10">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Index Overview </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="form-group">
+      <label>Name</label>
+      <input
+        type="text"
+        name="name"
+        class="form-control"
+        [(ngModel)]="model.name"
+        #name="ngModel"
+        [ngClass]="{ 'is-invalid': userForm.submitted && name.invalid }"
+        required
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="userForm.submitted && name.invalid"
+      >
+        <p *ngIf="name.errors.required">Name is required</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <input
+        type="text"
+        class="form-control"
+        name="description"
+        [(ngModel)]="model.description"
+        #description="ngModel"
+        [ngClass]="{
+          'is-invalid': userForm.submitted && description.invalid
+        }"
+        description
+        required
+      />
+      <div
+        *ngIf="userForm.submitted && description.invalid"
+        class="invalid-feedback"
+      >
+        <div *ngIf="description.errors.required">description is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="IndexType">Index Type</label>
+      <select
+        class="form-control"
+        id="index_type"
+        name="index_type"
+        [(ngModel)]="model.index_type"
+        #index_type="ngModel"
+      >
+        <option *ngFor="let index_type of index_types" [value]="index_type">
+          {{ index_type }}
+        </option>
+      </select>
+      <div
+        *ngIf="userForm.submitted && index_type.invalid"
+        class="invalid-feedback"
+      >
+        <div *ngIf="index_type.errors.required">index_type is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Splunk App Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="app_name"
+        [(ngModel)]="model.app_name"
+        #app_name="ngModel"
+        [ngClass]="{ 'is-invalid': userForm.submitted && app_name.invalid }"
+        app_name
+        required
+      />
+      <div
+        *ngIf="userForm.submitted && app_name.invalid"
+        class="invalid-feedback"
+      >
+        <div *ngIf="app_name.errors.required">app_name is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Splunk Role Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="splunk_role_name"
+        [(ngModel)]="model.splunk_role_name"
+        #splunk_role_name="ngModel"
+        [ngClass]="{ 'is-invalid': userForm.submitted && role_name.invalid }"
+        splunk_role_name
+        required
+      />
+      <div
+        *ngIf="userForm.submitted && splunk_role_name.invalid"
+        class="invalid-feedback"
+      >
+        <div *ngIf="splunk_role_name.errors.required">
+          Splunk Role Name is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>AGS Entitlement Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="ags_entitlement"
+        [(ngModel)]="model.ags_entitlement"
+        #ags_entitlement="ngModel"
+        [ngClass]="{ 'is-invalid': userForm.submitted && role_name.invalid }"
+        ags_entitlement
+        required
+      />
+      <div
+        *ngIf="userForm.submitted && role_name.invalid"
+        class="invalid-feedback"
+      >
+        <div *ngIf="role_name.errors.required">
+          AGS Entilement is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Index Created Date</label>
+      <input
+        type="date"
+        class="form-control"
+        name="index_created_date"
+        [(ngModel)]="model.index_created_date"
+        #role_name="ngModel"
+        [ngClass]="{ 'is-invalid': userForm.submitted && role_name.invalid }"
+        index_created_date
+        required
+      />
+      <div
+        *ngIf="userForm.submitted && role_name.invalid"
+        class="invalid-feedback"
+      >
+        <div *ngIf="role_name.errors.required">
+          Index Created Date required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="IndexType">Index Created By</label>
+      <select
+        class="form-control"
+        id="index_created_by"
+        name="index_created_by"
+        [(ngModel)]="model.index_created_by"
+        #index_created_by="ngModel"
+      >
+        <option
+          *ngFor="let index_created_by of index_created_by_list"
+          [value]="index_created_by"
+        >
+          {{ index_created_by }}
+        </option>
+      </select>
+      <div
+        *ngIf="userForm.submitted && index_created_by.invalid"
+        class="invalid-feedback"
+      >
+        <div *ngIf="index_created_by.errors.required">
+          Index Created by is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Index Daily Size</label>
+      <input
+        type="text"
+        class="form-control"
+        name="index_daily_size"
+        [(ngModel)]="model.index_daily_size"
+        #index_daily_size="ngModel"
+        [ngClass]="{ 'is-invalid': userForm.submitted && role_name.invalid }"
+        index_daily_size
+        required
+      />
+      <div
+        *ngIf="userForm.submitted && index_daily_size.invalid"
+        class="invalid-feedback"
+      >
+        <div *ngIf="index_daily_size.errors.required">
+          Index Daily Size is required
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+  <p></p>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Application Overview </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="form-group">
+      <label>Ability Application Name</label>
+      <input
+        type="text"
+        name="ability_app_name"
+        class="form-control"
+        [(ngModel)]="model.ability_app_name"
+        #ability_app_name="ngModel"
+        [ngClass]="{
+          'is-invalid': userForm.submitted && ability_app_name.invalid
+        }"
+        required
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="userForm.submitted && ability_app_name.invalid"
+      >
+        <p *ngIf="ability_app_name.errors.required">
+          Ability App Name is required
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>ITAM Support Group</label>
+      <input
+        type="text"
+        class="form-control"
+        name="itam_support_group"
+        [(ngModel)]="model.itam_support_group"
+        #itam_support_group="ngModel"
+        [ngClass]="{
+          'is-invalid': userForm.submitted && itam_support_group.invalid
+        }"
+        itam_support_group
+        required
+      />
+      <div
+        *ngIf="userForm.submitted && itam_support_group.invalid"
+        class="invalid-feedback"
+      >
+        <div *ngIf="itam_support_group.errors.required">
+          ITAM Support group is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Data Owner</label>
+      <input
+        type="email"
+        class="form-control"
+        name="data_owner"
+        [(ngModel)]="model.data_owner"
+        #data_owner="ngModel"
+        [ngClass]="{ 'is-invalid': userForm.submitted && data_owner.invalid }"
+        data_owner
+        required
+      />
+      <div
+        *ngIf="userForm.submitted && data_owner.invalid"
+        class="invalid-feedback"
+      >
+        <div *ngIf="data_owner.errors.required">Data Owner is required</div>
+        <div *ngIf="data_owner.errors.email">
+          Data Owner Must be a valid email address
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Support Group Email</label>
+      <input
+        type="email"
+        class="form-control"
+        name="support_group_email"
+        [(ngModel)]="model.support_group_email"
+        #support_group_email="ngModel"
+        [ngClass]="{
+          'is-invalid': userForm.submitted && support_group_email.invalid
+        }"
+        support_group_email
+        required
+      />
+      <div
+        *ngIf="userForm.submitted && support_group_email.invalid"
+        class="invalid-feedback"
+      >
+        <div *ngIf="support_group_email.errors.required">
+          Support Group email is required
+        </div>
+        <div *ngIf="support_group_email.errors.email">
+          Support Group Email Must be a valid email address
+        </div>
+      </div>
+    </div>
+
+    
+  </mat-expansion-panel>
+ 
+</div>
+</form>
