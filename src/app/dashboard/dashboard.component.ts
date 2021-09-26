@@ -21,7 +21,7 @@ export class SplunkAsset {
 export class DashboardComponent {
 
   title = 'Dashboard'; 
-  model = new SplunkAsset("John", 52, "12 Lonsdale street");
+  model = new SplunkAsset();
 
   
   index_types = [
