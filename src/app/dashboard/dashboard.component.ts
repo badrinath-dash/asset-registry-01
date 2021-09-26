@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 export class SplunkAsset {
@@ -22,13 +21,7 @@ export class SplunkAsset {
 export class DashboardComponent {
 
   title = 'Dashboard'; 
-  model = new SplunkAsset();
-  
-  userForm = new FormGroup({
-    'name': new FormControl('' , [ Validators.required]),
-    'alterEgo': new FormControl(),
-    'power': new FormControl()
-  });
+  model = new SplunkAsset("John", 52, "12 Lonsdale street");
 
   
   index_types = [
@@ -46,11 +39,8 @@ export class DashboardComponent {
   ];
 
   constructor() {}
-
-  onSubmit() {
-    console.log(this.userForm);
-  }
- 
+  submitted = false;
+  onSubmit() { this.submitted = true; }
 
 }
 
