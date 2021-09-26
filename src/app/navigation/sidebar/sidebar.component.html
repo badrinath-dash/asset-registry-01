@@ -3,11 +3,11 @@
     <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
 	</div>
     <mat-divider></mat-divider>
-    <mat-list-item routerLinkActive="active-list-item" routerLink="create-asset" title="create-asset">
+    <mat-list-item routerLinkActive="active-list-item" routerLink="dashboard" title="create-asset">
       <mat-icon class="icon" [@iconAnimation]="sidebarState">New</mat-icon>
       <span class="label" [@labelAnimation]="sidebarState">Create Asset</span>
     </mat-list-item>
-    <mat-list-item routerLinkActive="active-list-item" routerLink="Home" title="Home">
+    <mat-list-item routerLinkActive="active-list-item" routerLink="home" title="Home">
     <mat-icon class="icon" [@iconAnimation]="sidebarState">Home</mat-icon>
       <span class="label" [@labelAnimation]="sidebarState">Home</span>
     </mat-list-item>
