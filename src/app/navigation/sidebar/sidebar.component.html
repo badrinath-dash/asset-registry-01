@@ -2,22 +2,20 @@
   <mat-nav-list class="menu-list">
     <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
 	</div>
-  
     <mat-divider></mat-divider>
-    <mat-list-item routerLinkActive="active-list-item" routerLink="dashboard" title="create-asset">
-      <mat-icon class="icon" [@iconAnimation]="sidebarState">New</mat-icon>
-      <span class="label" [@labelAnimation]="sidebarState">Create Asset</span>
-    </mat-list-item>
     <mat-list-item routerLinkActive="active-list-item" routerLink="home" title="Home">
-    <mat-icon class="icon" [@iconAnimation]="sidebarState">Home</mat-icon>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
       <span class="label" [@labelAnimation]="sidebarState">Home</span>
     </mat-list-item>
+    <mat-list-item routerLinkActive="active-list-item" routerLink="dashboard" title="create-asset">
+    <mat-icon class="icon" [@iconAnimation]="sidebarState">input</mat-icon>
+    <span class="label" [@labelAnimation]="sidebarState">Create Asset</span>
+  </mat-list-item>
     <mat-list-item routerLinkActive="active-list-item" routerLink="feedback" title="Feedback">
       <mat-icon class="icon" [@iconAnimation]="sidebarState">feedback</mat-icon>
       <span class="label" [@labelAnimation]="sidebarState">Feedback</span>
     </mat-list-item>
   </mat-nav-list>
-  <a routerLink="/home" routerLinkActive="active">Home</a>
 </div>
 
 
