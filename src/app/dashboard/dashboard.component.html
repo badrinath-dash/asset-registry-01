@@ -1,5 +1,5 @@
 <div class="create-asset-form">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="create_form" (ngSubmit)="onSubmit()">
     <mat-expansion-panel [expanded]="true">
       <mat-expansion-panel-header>
         <mat-panel-title> Index Overview </mat-panel-title>
@@ -32,25 +32,30 @@
           </div>
         </div>
       </div>
-
+      
       <div class="form-group">
-        <label id="example-radio-group-label">IndexType</label>
-        <mat-radio-group
-          aria-labelledby="example-radio-group-label"
-          aria-required="true"
-          class="example-radio-group"
-          [(ngModel)]="index_types"
+      <label id="example-radio-group-label">IndexType</label>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        formControlName="indextype"
+      >
+        <mat-radio-button
+          class="example-radio-button"
+          *ngFor="let index_type of index_types"
+          [value]="index_type"
         >
-          <mat-radio-button
-            class="example-radio-button"
-            *ngFor="let index_type of index_types"
-            [value]="index_type"
-          >
-            {{ index_type }}
-          </mat-radio-button>
-        </mat-radio-group>
+          {{ index_type }}
+        </mat-radio-button>
+      </mat-radio-group>
+      <div *ngIf="submitted && f.indextype.errors" class="invalid-feedback">
+      <div *ngIf="f.indextype.errors.required">
+      indextype is required
       </div>
+    </div>
+    </div>
 
+      
       <div class="form-group">
         <label>App Name</label>
         <input

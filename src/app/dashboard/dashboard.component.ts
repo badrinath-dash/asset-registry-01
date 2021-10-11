@@ -14,7 +14,7 @@ import {
 })
 
 export class DashboardComponent implements OnInit {
-  form: FormGroup;
+  create_form: FormGroup;
   submitted = false;
   title = 'Dashboard'; 
  
@@ -23,7 +23,8 @@ export class DashboardComponent implements OnInit {
   public app_name: string;
   public splunk_role_name: string;
   public ags_entitlement: string;
-  public index_created_date: date;
+  public index_created_date: string;
+  public indextype: string;
   
   index_types: string[] = [
     'Event', 
@@ -42,11 +43,12 @@ export class DashboardComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group(
+    this.create_form = this.formBuilder.group(
       {
         name: ['', Validators.required],
         description: ['', Validators.required],
         app_name: ['', Validators.required],
+        indextype: ['', Validators.required],
         splunk_role_name: ['', Validators.required],
         ags_entitlement: ['', Validators.required],
         index_created_date: ['', Validators.required],
@@ -55,22 +57,22 @@ export class DashboardComponent implements OnInit {
   }
 
   get f(): { [key: string]: AbstractControl } {
-    return this.form.controls;
+    return this.create_form.controls;
   }
 
   onSubmit(): void {
     this.submitted = true;
 
-    if (this.form.invalid) {
+    if (this.create_form.invalid) {
       return;
     }
 
-    console.log(JSON.stringify(this.form.value, null, 2));
+    console.log(JSON.stringify(this.create_form.value, null, 2));
   }
 
   onReset(): void {
     this.submitted = false;
-    this.form.reset();
+    this.create_form.reset();
   }
 
 }
