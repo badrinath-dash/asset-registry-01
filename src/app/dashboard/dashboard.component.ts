@@ -7,17 +7,6 @@ import {
 } from '@angular/forms';
 
 
-export class SplunkAsset {
-  public name: string;
-  public description: string;
-  public email: string;
-  public password: string;
-  public index_type: string;
-  public app_name: string;
-  public role_name: string;
-  public index_created_by_list: string;
-}
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -28,11 +17,15 @@ export class DashboardComponent implements OnInit {
   form: FormGroup;
   submitted = false;
   title = 'Dashboard'; 
-  model = new SplunkAsset();
-
-  favoriteSeason: string;
-  seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
-  index_types = [
+ 
+  public name: string;
+  public description: string;
+  public app_name: string;
+  public splunk_role_name: string;
+  public ags_entitlement: string;
+  public index_created_date: date;
+  
+  index_types: string[] = [
     'Event', 
     'Metrics',
     'Summary', 
@@ -52,8 +45,11 @@ export class DashboardComponent implements OnInit {
     this.form = this.formBuilder.group(
       {
         name: ['', Validators.required],
-        description: ['', Validators.required]
-        
+        description: ['', Validators.required],
+        app_name: ['', Validators.required],
+        splunk_role_name: ['', Validators.required],
+        ags_entitlement: ['', Validators.required],
+        index_created_date: ['', Validators.required],
       }       
     );
   }

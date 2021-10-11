@@ -1,62 +1,138 @@
 <div class="create-asset-form">
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <mat-expansion-panel  [expanded]="true">
-    <mat-expansion-panel-header>
-      <mat-panel-title> Index Overview </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="form-group">
-    <label>Name</label>
-    <input
-      type="text"
-      formControlName="name"
-      class="form-control"
-      [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
-    />
-    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-      <div *ngIf="f.name.errors.required">Name is required</div>
-    </div>
-    </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title> Index Overview </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          type="text"
+          formControlName="name"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+        />
+        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+          <div *ngIf="f.name.errors.required">Name is required</div>
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label>Description</label>
-      <input
-        type="text"
-        class="form-control"
-        formControlName="description"
-      class="form-control"
-      [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
-    />
-    <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-      <div *ngIf="f.description.errors.required">Description is required</div>
-    </div>
-    </div>   
+      <div class="form-group">
+        <label>Description</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="description"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
+        />
+        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+          <div *ngIf="f.description.errors.required">
+            Description is required
+          </div>
+        </div>
+      </div>
 
-    <div class="form-group">
-    <label id="example-radio-group-label">IndexType</label>
-    <mat-radio-group
-      aria-labelledby="example-radio-group-label"
-      class="example-radio-group"
-      [(ngModel)]="index_types">
-      <mat-radio-button class="example-radio-button" *ngFor="let index_type of index_types" [value]="index_type">
-        {{index_type}}
-      </mat-radio-button>
-    </mat-radio-group>
-  </div>
+      <div class="form-group">
+        <label id="example-radio-group-label">IndexType</label>
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          aria-required="true"
+          class="example-radio-group"
+          [(ngModel)]="index_types"
+        >
+          <mat-radio-button
+            class="example-radio-button"
+            *ngFor="let index_type of index_types"
+            [value]="index_type"
+          >
+            {{ index_type }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
 
-  </mat-expansion-panel>
-  <p></p>
-  <p></p>
-  <div class="form-group">
-    <button class="btn btn-success btn-block">Create</button>
-    <button
+      <div class="form-group">
+        <label>App Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="app_name"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.app_name.errors }"
+        />
+        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+          <div *ngIf="f.app_name.errors.required">App Name is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Splunk Role Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="splunk_role_name"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.splunk_role_name.errors }"
+        />
+        <div
+          *ngIf="submitted && f.splunk_role_name.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.splunk_role_name.errors.required">
+            Splunk Role Name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>AGS Entitlement Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="ags_entitlement"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.ags_entitlement.errors }"
+        />
+        <div
+          *ngIf="submitted && f.ags_entitlement.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.ags_entitlement.errors.required">
+            AGS Entitlement Name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Index Created Date</label>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="index_created_date"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.index_created_date.errors }"
+        />
+        <div
+          *ngIf="submitted && f.index_created_date.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.index_created_date.errors.required">
+            Index Created Name is required
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+    <p></p>
+    <p></p>
+    <div class="form-group">
+      <button class="btn btn-success btn-block">Create</button>
+      <button
         type="button"
         (click)="onReset()"
         class="btn btn-warning float-right"
       >
         Reset
       </button>
-  </div>
-
-  
-</form>
+    </div>
+  </form>
 </div>
