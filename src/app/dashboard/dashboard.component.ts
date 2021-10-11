@@ -3,7 +3,7 @@ import {
   AbstractControl,
   FormBuilder,
   FormGroup,
-  Validators
+  Validators,
 } from '@angular/forms';
 
 
@@ -30,7 +30,8 @@ export class DashboardComponent implements OnInit {
   title = 'Dashboard'; 
   model = new SplunkAsset();
 
-  
+  favoriteSeason: string;
+  seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   index_types = [
     'Event', 
     'Metrics',
