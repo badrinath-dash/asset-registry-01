@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  Validators
+} from '@angular/forms';
 
 
 export class SplunkAsset {
@@ -18,8 +24,9 @@ export class SplunkAsset {
   styleUrls: ['./dashboard.component.css']
 })
 
-export class DashboardComponent {
-
+export class DashboardComponent implements OnInit {
+  form: FormGroup;
+  submitted = false;
   title = 'Dashboard'; 
   model = new SplunkAsset();
 
@@ -38,9 +45,36 @@ export class DashboardComponent {
     'Sunith'
   ];
 
-  constructor() {}
-  submitted = false;
-  onSubmit() { this.submitted = true; }
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.form = this.formBuilder.group(
+      {
+        name: ['', Validators.required],
+        description: ['', Validators.required]
+        
+      }       
+    );
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
+  }
+
+  onSubmit(): void {
+    this.submitted = true;
+
+    if (this.form.invalid) {
+      return;
+    }
+
+    console.log(JSON.stringify(this.form.value, null, 2));
+  }
+
+  onReset(): void {
+    this.submitted = false;
+    this.form.reset();
+  }
 
 }
 
