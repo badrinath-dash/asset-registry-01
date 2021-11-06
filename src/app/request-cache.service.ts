@@ -18,10 +18,9 @@ const maxAge = 30000; // maximum cache age (ms)
 
 @Injectable()
 export class RequestCacheWithMap implements RequestCache {
-
   cache = new Map<string, RequestCacheEntry>();
 
-  constructor(private messenger: MessageService) { }
+  constructor(private messenger: MessageService) {}
 
   get(req: HttpRequest<any>): HttpResponse<any> | undefined {
     const url = req.urlWithParams;
@@ -31,10 +30,9 @@ export class RequestCacheWithMap implements RequestCache {
       return undefined;
     }
 
-    const isExpired = cached.lastRead < (Date.now() - maxAge);
+    const isExpired = cached.lastRead < Date.now() - maxAge;
     const expired = isExpired ? 'expired ' : '';
-    this.messenger.add(
-      `Found ${expired}cached response for "${url}".`);
+    this.messenger.add(`Found ${expired}cached response for "${url}".`);
     return isExpired ? undefined : cached.response;
   }
 
@@ -47,7 +45,7 @@ export class RequestCacheWithMap implements RequestCache {
 
     // remove expired cache entries
     const expired = Date.now() - maxAge;
-    this.cache.forEach(entry => {
+    this.cache.forEach((entry) => {
       if (entry.lastRead < expired) {
         this.cache.delete(entry.url);
       }
@@ -56,7 +54,6 @@ export class RequestCacheWithMap implements RequestCache {
     this.messenger.add(`Request cache size: ${this.cache.size}.`);
   }
 }
-
 
 /*
 Copyright Google LLC. All Rights Reserved.

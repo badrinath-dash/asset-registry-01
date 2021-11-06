@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Hero } from './hero';
+import { HeroesService } from './dashboard.service';
 import {
   AbstractControl,
   FormBuilder,
@@ -6,18 +8,20 @@ import {
   Validators,
 } from '@angular/forms';
 
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  providers: [HeroesService]
 })
-
 export class DashboardComponent implements OnInit {
+  heroes: Hero[] = [];
+  editHero: Hero | undefined; // the hero currently being edited
+
   create_form: FormGroup;
   submitted = false;
-  title = 'Dashboard'; 
- 
+  title = 'Dashboard';
+
   public name: string;
   public description: string;
   public app_name: string;
@@ -25,35 +29,28 @@ export class DashboardComponent implements OnInit {
   public ags_entitlement: string;
   public index_created_date: string;
   public indextype: string;
-  
-  index_types: string[] = [
-    'Event', 
-    'Metrics',
-    'Summary', 
-    'Summary Metrics'
-  ];
+
+  index_types: string[] = ['Event', 'Metrics', 'Summary', 'Summary Metrics'];
 
   index_created_by_list: string[] = [
     'Badri Dash',
     'Bismaya Pattanaik',
     'Jay Regunathan',
-    'Sunith'
+    'Sunith',
   ];
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.create_form = this.formBuilder.group(
-      {
-        name: ['', Validators.required],
-        description: ['', Validators.required],
-        app_name: ['', Validators.required],
-        indextype: ['', Validators.required],
-        splunk_role_name: ['', Validators.required],
-        ags_entitlement: ['', Validators.required],
-        index_created_date: ['', Validators.required],
-      }       
-    );
+    this.create_form = this.formBuilder.group({
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      app_name: ['', Validators.required],
+      indextype: ['', Validators.required],
+      splunk_role_name: ['', Validators.required],
+      ags_entitlement: ['', Validators.required],
+      index_created_date: ['', Validators.required],
+    });
   }
 
   get f(): { [key: string]: AbstractControl } {
@@ -74,7 +71,4 @@ export class DashboardComponent implements OnInit {
     this.submitted = false;
     this.create_form.reset();
   }
-
 }
-
-
