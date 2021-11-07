@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from './hero';
-//import { HeroesService } from './dashboard.service';
+import { HeroesService } from './dashboard.service';
 import {
   AbstractControl,
   FormBuilder,
@@ -12,12 +12,35 @@ import {
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  //providers: [HeroesService]
+  providers: [HeroesService]
 })
-export class DashboardComponent implements OnInit {
-  //heroes: Hero[] = [];
-  //editHero: Hero | undefined; // the hero currently being edited
 
+export class DashboardComponent implements OnInit {
+  heroes: Hero[] = [];
+  editHero: Hero ; // the hero currently being edited
+
+  constructor(private heroesService: HeroesService) { }
+  
+  ngOnInit() {
+    this.getHeroes();
+  }
+
+  getHeroes(): void {
+    this.heroesService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
+  }
+
+  add(name: string): void {
+    this.editHero = undefined;
+    name = name.trim();
+    if (!name) { return; }
+
+    // The server will generate the id for this new hero
+    const newHero: Hero = { name } as Hero;
+    this.heroesService.addHero(newHero)
+      .subscribe(hero => this.heroes.push(hero));
+  }
+  
   create_form: FormGroup;
   submitted = false;
   title = 'Dashboard';
