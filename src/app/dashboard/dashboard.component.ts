@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from './hero';
-import { HeroesService } from './dashboard.service';
+//import { HeroesService } from './dashboard.service';
 import {
   AbstractControl,
   FormBuilder,
@@ -12,11 +12,11 @@ import {
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  providers: [HeroesService]
+  //providers: [HeroesService]
 })
 export class DashboardComponent implements OnInit {
-  heroes: Hero[] = [];
-  editHero: Hero | undefined; // the hero currently being edited
+  //heroes: Hero[] = [];
+  //editHero: Hero | undefined; // the hero currently being edited
 
   create_form: FormGroup;
   submitted = false;
