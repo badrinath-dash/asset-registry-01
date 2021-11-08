@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientXsrfModule } from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from '../in-memory-data.service';
+//import { InMemoryDataService }  from '../in-memory-data.service';
 
 
 
@@ -28,8 +28,7 @@ import { InMemoryDataService }  from '../in-memory-data.service';
     MatRadioModule,
     HttpClientModule,
     HttpClientXsrfModule,
-    HttpClientInMemoryWebApiModule,
-    InMemoryDataService
+    HttpClientInMemoryWebApiModule
   ],
   providers: [],
   bootstrap: [DashboardComponent]
