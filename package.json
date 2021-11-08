@@ -10,6 +10,7 @@
     "@angular/compiler-cli": "12.2.5",
     "@angular/core": "12.2.6",
     "@angular/forms": "12.2.5",
+    "@angular/http": "^7.2.16",
     "@angular/localize": "12.2.5",
     "@angular/material": "^12.2.5",
     "@angular/platform-browser": "12.2.5",
