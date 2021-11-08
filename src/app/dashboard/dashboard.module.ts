@@ -6,6 +6,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientXsrfModule } from '@angular/common/http';
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from '../in-memory-data.service';
+
 
 
 @NgModule({
@@ -19,7 +25,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatDividerModule,
     MatExpansionModule,
-    MatRadioModule
+    MatRadioModule,
+    HttpClientModule,
+    HttpClientXsrfModule,
+    HttpClientInMemoryWebApiModule,
+    InMemoryDataService
   ],
   providers: [],
   bootstrap: [DashboardComponent]
