@@ -9,32 +9,33 @@ export class SplunkAsset {
   public app_name: string;
   public role_name: string;
   public index_created_by_list: string;
+  public splunk_role_name: string;
+  public ags_entitlement: string;
+  public index_created_date: date;
+  public index_created_by: string;
+  public index_daily_size: string;
+  public ability_app_name: string;
+  public itam_support_group: string;
+  public data_owner: string;
+  public support_group_email: string;
 }
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
-
 export class HomeComponent {
-
-  title = 'home'; 
+  title = 'home';
   model = new SplunkAsset();
 
-  
-  index_types = [
-    'Event', 
-    'Metrics',
-    'Summary', 
-    'Summary Metrics'
-  ];
+  index_types = ['Event', 'Metrics', 'Summary', 'Summary Metrics'];
 
   index_created_by_list: string[] = [
     'Badri Dash',
     'Bismaya Pattanaik',
     'Jay Regunathan',
-    'Sunith'
+    'Sunith',
   ];
 
   constructor() {}
@@ -42,8 +43,4 @@ export class HomeComponent {
   onSubmit(form) {
     console.log(form.value);
   }
- 
-
 }
-
-
