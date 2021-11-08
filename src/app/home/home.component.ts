@@ -11,7 +11,7 @@ export class SplunkAsset {
   public index_created_by_list: string;
   public splunk_role_name: string;
   public ags_entitlement: string;
-  public index_created_date: date;
+  public index_created_date: string;
   public index_created_by: string;
   public index_daily_size: string;
   public ability_app_name: string;
