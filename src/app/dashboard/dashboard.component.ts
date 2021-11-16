@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { HeroesService } from './dashboard.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { splunkjs } from '../../node_modules/splunk-sdk/splunk.js';
+import { Service } from '../../../node_modules/splunk-sdk/lib/service.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
 
   //constructor(private formBuilder: FormBuilder, heroesService: HeroesService) {}
 
-  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {}
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private Service: Service) {}
   ngOnInit(): void {
     this.create_form = this.formBuilder.group({
       name: ['', Validators.required],
@@ -78,7 +78,17 @@ export class DashboardComponent implements OnInit {
       return;
     }
     
+
     
+ Service.request(
+  "storage/collections/data/asset_registy_collection/",
+  "POST",
+  null,
+  null,
+  this.create_form.value,
+  {"Content-Type": "application/json"},
+  null
+);
 
     this.httpClient.post<any>('http://127.0.0.1:8000/en-GB/app/asset-registry/asset_registry_home/splunkd/__raw/servicesNS/nobody/asset-registry/storage/collections/data/asset_registy_collection?output_mode=json', this.create_form.value,).subscribe(data => {
         console.log(data.response);
