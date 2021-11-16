@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from './hero';
-//import { HeroesService } from './dashboard.service';
 import {
   AbstractControl,
   FormBuilder,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { HeroesService } from './dashboard.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { splunkjs } from '../../node_modules/splunk-sdk/splunk.js';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
- // providers: [HeroesService]
+  providers: [HeroesService]
 })
 
 export class DashboardComponent implements OnInit {
@@ -48,7 +50,7 @@ export class DashboardComponent implements OnInit {
 
   //constructor(private formBuilder: FormBuilder, heroesService: HeroesService) {}
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) {}
   ngOnInit(): void {
     this.create_form = this.formBuilder.group({
       name: ['', Validators.required],
@@ -75,6 +77,15 @@ export class DashboardComponent implements OnInit {
     if (this.create_form.invalid) {
       return;
     }
+    
+    
+
+    this.httpClient.post<any>('http://127.0.0.1:8000/en-GB/app/asset-registry/asset_registry_home/splunkd/__raw/servicesNS/nobody/asset-registry/storage/collections/data/asset_registy_collection?output_mode=json', this.create_form.value,).subscribe(data => {
+        console.log(data.response);
+    });
+
+    
+    
 
     console.log(JSON.stringify(this.create_form.value, null, 2));
   }
@@ -84,3 +95,7 @@ export class DashboardComponent implements OnInit {
     this.create_form.reset();
   }
 }
+  function createData(data: any) {
+    throw new Error('Function not implemented.');
+  }
+

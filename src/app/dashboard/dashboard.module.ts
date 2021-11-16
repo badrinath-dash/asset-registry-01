@@ -9,8 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientXsrfModule } from '@angular/common/http';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-//import { InMemoryDataService }  from '../in-memory-data.service';
+
 
 
 
@@ -27,9 +26,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     MatExpansionModule,
     MatRadioModule,
     HttpClientModule,
-    HttpClientXsrfModule,
-    HttpClientInMemoryWebApiModule
-  ],
+    HttpClientXsrfModule  ],
   providers: [],
   bootstrap: [DashboardComponent]
 })
